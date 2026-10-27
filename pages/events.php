@@ -61,6 +61,14 @@ include __DIR__ . '/../includes/header.php'; // navigatiebalk
                             <input type="hidden" name="event_id" value="<?= (int) $ev['Event_id'] ?>">
                             <button>Openen</button>
                         </form>
+                        <?php if (APP_DEBUG && $ev['rol'] === 'admin'): ?> <!-- verwijderknop alleen in debug-modus en voor admins; de server controleert de organisator -->
+  <form method="post" action="<?= BASE_URL ?>/actions/event_delete.php"
+        onsubmit="return confirm('Event en alle partijen en standen definitief verwijderen?')">
+    <?= csrfField() ?>
+    <input type="hidden" name="event_id" value="<?= (int)$ev['Event_id'] ?>">
+    <button>Verwijderen</button>
+  </form>
+<?php endif; ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
@@ -82,5 +90,7 @@ include __DIR__ . '/../includes/header.php'; // navigatiebalk
             <textarea name="groepen" rows="4" required></textarea></label>
         <button>Aanmaken</button>
     </form>
+    
+    
 </main>
 <?php include __DIR__ . '/../includes/footer.php'; ?>
