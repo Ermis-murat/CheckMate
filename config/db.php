@@ -2,7 +2,7 @@
 // config/db.php
 date_default_timezone_set('Europe/Amsterdam');// alle tijden in Nederlandse tijd
 
-define('BASE_URL', '/GitHub/CheckMate');// pad van het project, gebruikt in alle links
+define('BASE_URL', '/GitHub/CheckMate');// pad van het project, gebruikt in alle links (haal de /GitHub weg als het niet nodig is)
 define('APP_DEBUG', true); // true = mails in logboek; false in productie
 
 $dsn = 'mysql:host=localhost;dbname=checkmate;charset=utf8mb4';
